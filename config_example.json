@@ -3,8 +3,17 @@
     "coin": "boolberry",
     "symbol": "BBR",
 
-    "logLevel": "debug",
-    "logColors": true,
+    "logging": {
+        "files": {
+            "level": "info",
+            "directory": "logs",
+            "flushInterval": 5
+        },
+        "console": {
+            "level": "info",
+            "colors": true
+        }
+    },
 
     "coinUnits": 1000000000000,
 
@@ -27,6 +36,8 @@
         "clusterForks": "auto",
         "poolAddress": "1L1ZPC9XodC6g5BX8j8m3vcdkXPiZrVF7RcERWE879coQDWiztUbkkVZ86o43P27Udb3qxL4B41gbaGpvj3nS7DgFZauAZE",
         "blockRefreshInterval": 1000,
+        "scratchpadFilePath": "/home/clintar/NetBeansProjects/myserverscratchpad.bin",
+        "scratchpadFileUpdateInterval": 14400000,
         "minerTimeout": 900,
         "ports": [
             {
@@ -40,6 +51,12 @@
                 "protocol": "tcp",
                 "difficulty": 500000,
                 "desc": "High end CPUs"
+            },
+            {
+                "port": 8888,
+                "difficulty": 10000,
+                "desc": "Hidden port",
+                "hidden": true
             },
             {
                 "port": 1111,
@@ -78,18 +95,30 @@
 
     "payments": {
         "enabled": true,
+        "interval": 600,
+        "maxAddresses": 50,
+        "mixin": 0,
         "transferFee": 5000000000,
+        "minPayment": 100000000000,
+        "denomination": 100000000000
+    },
+
+    "blockUnlocker": {
+        "enabled": true,
         "interval": 30,
-        "poolFee": 2,
         "depth": 60,
-        "maxAddresses": 50
+        "poolFee": 2,
+        "devDonation": 0.0
     },
 
     "api": {
         "enabled": true,
         "hashrateWindow": 600,
         "updateInterval": 3,
-        "port": 8117
+        "port": 8117,
+        "blocks": 30,
+        "payments": 30,
+        "password": "your_password"
     },
 
     "daemon": {
